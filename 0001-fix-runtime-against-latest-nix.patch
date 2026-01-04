@@ -1,0 +1,133 @@
+From eb523f9ea9b4626bad34f5199f4b9e2e3a95393e Mon Sep 17 00:00:00 2001
+From: dmfrpro <dmfr2021y@gmail.com>
+Date: Mon, 5 Jan 2026 02:52:13 +0300
+Subject: fix runtime against latest nix
+
+Signed-off-by: dmfrpro <dmfr2021y@gmail.com>
+---
+ 0001-fix-runtime-against-latest-nix.patch | 97 +++++++++++++++++++++++
+ extra-builtins.cc                         |  2 +-
+ 2 files changed, 98 insertions(+), 1 deletion(-)
+ create mode 100644 0001-fix-runtime-against-latest-nix.patch
+
+diff --git a/0001-fix-runtime-against-latest-nix.patch b/0001-fix-runtime-against-latest-nix.patch
+new file mode 100644
+index 0000000..6da36c3
+--- /dev/null
++++ b/0001-fix-runtime-against-latest-nix.patch
+@@ -0,0 +1,97 @@
++From 3709ebf333dace126a0d0a6d25699ae173f6f272 Mon Sep 17 00:00:00 2001
++From: dmfrpro <dmfr2021y@gmail.com>
++Date: Mon, 5 Jan 2026 02:52:13 +0300
++Subject: fix runtime against latest nix
++
++Signed-off-by: dmfrpro <dmfr2021y@gmail.com>
++---
++ 0001-fix-runtime-against-latest-nix.patch | 61 +++++++++++++++++++++++
++ extra-builtins.cc                         |  2 +-
++ 2 files changed, 62 insertions(+), 1 deletion(-)
++ create mode 100644 0001-fix-runtime-against-latest-nix.patch
++
++diff --git a/0001-fix-runtime-against-latest-nix.patch b/0001-fix-runtime-against-latest-nix.patch
++new file mode 100644
++index 0000000..860b515
++--- /dev/null
+++++ b/0001-fix-runtime-against-latest-nix.patch
++@@ -0,0 +1,61 @@
+++From 98a30d11c2d2077989623d3492f67d5c3d91baea Mon Sep 17 00:00:00 2001
+++From: dmfrpro <dmfr2021y@gmail.com>
+++Date: Mon, 5 Jan 2026 02:52:13 +0300
+++Subject: fix runtime against latest nix
+++
+++Signed-off-by: dmfrpro <dmfr2021y@gmail.com>
+++---
+++ 0001-fix-runtime-against-latest-nix.patch | 26 +++++++++++++++++++++++
+++ extra-builtins.cc                         |  3 +++
+++ 2 files changed, 29 insertions(+)
+++ create mode 100644 0001-fix-runtime-against-latest-nix.patch
+++
+++diff --git a/0001-fix-runtime-against-latest-nix.patch b/0001-fix-runtime-against-latest-nix.patch
+++new file mode 100644
+++index 0000000..afd6e58
+++--- /dev/null
++++++ b/0001-fix-runtime-against-latest-nix.patch
+++@@ -0,0 +1,26 @@
++++From 63c42b5ff514c02c34aca9055c83b28eaaaada1f Mon Sep 17 00:00:00 2001
++++From: dmfrpro <dmfr2021y@gmail.com>
++++Date: Mon, 5 Jan 2026 02:52:13 +0300
++++Subject: fix runtime against latest nix
++++
++++Signed-off-by: dmfrpro <dmfr2021y@gmail.com>
++++---
++++ extra-builtins.cc | 2 ++
++++ 1 file changed, 2 insertions(+)
++++
++++diff --git a/extra-builtins.cc b/extra-builtins.cc
++++index b9e0206..2aa8035 100644
++++--- a/extra-builtins.cc
+++++++ b/extra-builtins.cc
++++@@ -1,6 +1,8 @@
++++ #include <nix/cmd/common-eval-args.hh>
++++ #include <nix/expr/eval-settings.hh>
+++++#include <nix/expr/nixexpr.hh>
++++ #include <nix/expr/primops.hh>
+++++#include <nix/expr/value.hh>
++++ #include <nix/fetchers/filtering-source-accessor.hh>
++++ #include <nix/store/globals.hh>
++++ #include <nix/util/configuration.hh>
++++-- 
++++2.51.0
++++
+++diff --git a/extra-builtins.cc b/extra-builtins.cc
+++index b9e0206..64c18b2 100644
+++--- a/extra-builtins.cc
++++++ b/extra-builtins.cc
+++@@ -1,6 +1,9 @@
+++ #include <nix/cmd/common-eval-args.hh>
++++#include <nix/expr/counter.hh>
+++ #include <nix/expr/eval-settings.hh>
++++#include <nix/expr/nixexpr.hh>
+++ #include <nix/expr/primops.hh>
++++#include <nix/expr/value.hh>
+++ #include <nix/fetchers/filtering-source-accessor.hh>
+++ #include <nix/store/globals.hh>
+++ #include <nix/util/configuration.hh>
+++-- 
+++2.51.0
+++
++diff --git a/extra-builtins.cc b/extra-builtins.cc
++index b9e0206..7e5e174 100644
++--- a/extra-builtins.cc
+++++ b/extra-builtins.cc
++@@ -1,9 +1,9 @@
++ #include <nix/cmd/common-eval-args.hh>
+++#include <nix/expr.hh>
++ #include <nix/expr/eval-settings.hh>
++ #include <nix/expr/primops.hh>
++ #include <nix/fetchers/filtering-source-accessor.hh>
++ #include <nix/store/globals.hh>
++-#include <nix/util/configuration.hh>
++ #include <nix/util/config-global.hh>
++ 
++ 
++-- 
++2.51.0
++
+diff --git a/extra-builtins.cc b/extra-builtins.cc
+index b9e0206..d843746 100644
+--- a/extra-builtins.cc
++++ b/extra-builtins.cc
+@@ -1,9 +1,9 @@
+ #include <nix/cmd/common-eval-args.hh>
++#include <nix/eval.hh>
+ #include <nix/expr/eval-settings.hh>
+ #include <nix/expr/primops.hh>
+ #include <nix/fetchers/filtering-source-accessor.hh>
+ #include <nix/store/globals.hh>
+-#include <nix/util/configuration.hh>
+ #include <nix/util/config-global.hh>
+ 
+ 
+-- 
+2.51.0
+

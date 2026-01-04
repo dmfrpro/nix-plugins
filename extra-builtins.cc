@@ -1,9 +1,9 @@
 #include <nix/cmd/common-eval-args.hh>
+#include <nix/expr/eval.hh>
 #include <nix/expr/eval-settings.hh>
 #include <nix/expr/primops.hh>
 #include <nix/fetchers/filtering-source-accessor.hh>
 #include <nix/store/globals.hh>
-#include <nix/util/configuration.hh>
 #include <nix/util/config-global.hh>
 
 
